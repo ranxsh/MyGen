@@ -65,10 +65,6 @@
 		<!-- 注入sqlSessionFactory -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<!-- 给出需要扫描Dao接口包 -->
-<<<<<<< HEAD
-		<property name="basePackage" value="com.soecode.lyf.dao" />
-=======
 		<property name="basePackage" value="com.xsr.jeesite.modules.sys.dao" />
->>>>>>> d61c48c5bc3d0859142d85ba6d5e22ca10a13bf8
 	</bean>
 </beans>

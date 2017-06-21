@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="Maven: aopalliance:aopalliance:1.0">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0.jar!/" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES />
   </library>

@@ -9,11 +9,6 @@
 	http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-
-	<description>Spring MVC Configuration</description>
-	<!-- 加载配置属性文件 -->
-	<context:property-placeholder ignore-unresolvable="true" location="classpath:properties/jeesite.properties" />
-
 	<!-- 配置SpringMVC -->
 	<!-- 1.开启SpringMVC注解模式 -->
 	<!-- 简化配置：
@@ -37,8 +32,4 @@
 
 	<!-- 4.扫描web相关的bean -->
 	<context:component-scan base-package="com.xsr.jeesite.modules.sys.web" />
-
-	<!-- 定义无Controller的path<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="redirect:${web.view.index}"/>
-
 </beans>
