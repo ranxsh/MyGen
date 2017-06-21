@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xsr.jeesite.dao.SysUserDao">
+  	<resultMap id="BaseResultMap" type="com.xsr.jeesite.entity.SysUser" >
+  	    <result column="no" property="no" jdbcType="VARCHAR" />
+  	    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+  	    <result column="company_id" property="companyId" jdbcType="VARCHAR" />
+  	    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+  	    <result column="photo" property="photo" jdbcType="VARCHAR" />
+  	    <result column="login_date" property="loginDate" jdbcType="TIMESTAMP" />
+  	    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+  	    <result column="login_flag" property="loginFlag" jdbcType="VARCHAR" />
+  	    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  	    <result column="office_id" property="officeId" jdbcType="VARCHAR" />
+  	    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+  	    <result column="password" property="password" jdbcType="VARCHAR" />
+  	    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+  	    <result column="user_type" property="userType" jdbcType="CHAR" />
+  	    <result column="phone" property="phone" jdbcType="VARCHAR" />
+  	    <result column="name" property="name" jdbcType="VARCHAR" />
+  	    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  	    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+  	    <result column="email" property="email" jdbcType="VARCHAR" />
+  	    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+  	</resultMap>
+
+    <sql id="Base_Column_List" >
+        
+        no,
+        del_flag,
+        company_id,
+        mobile,
+        photo,
+        login_date,
+        login_ip,
+        login_flag,
+        update_date,
+        office_id,
+        create_by,
+        password,
+        login_name,
+        user_type,
+        phone,
+        name,
+        create_date,
+        update_by,
+        email,
+        remarks
+    </sql>
+
+
+	<!--The user defined SQL!-->
+  	
+  	
+  	<!--The user defined SQL!-->
+  	
+  	<sql id="updateSql">
+		update sys_user T1 set 
+            <trim prefix="" prefixOverrides=",">
+            	,no = #{no},del_flag = #{delFlag},company_id = #{companyId},mobile = #{mobile},photo = #{photo},login_date = #{loginDate},login_ip = #{loginIp},login_flag = #{loginFlag},update_date = #{updateDate},office_id = #{officeId},create_by = #{createBy},password = #{password},login_name = #{loginName},user_type = #{userType},phone = #{phone},name = #{name},create_date = #{createDate},update_by = #{updateBy},email = #{email},remarks = #{remarks}
+            </trim>
+    </sql>
+  	
+  	<sql id="joinTables">
+    </sql>
+  	
+    <sql id="colList">
+        <trim prefix="" prefixOverrides=",">
+            , T1.no AS C1
+            , T1.del_flag AS C2
+            , T1.company_id AS C3
+            , T1.mobile AS C4
+            , T1.photo AS C5
+            , T1.login_date AS C6
+            , T1.login_ip AS C7
+            , T1.login_flag AS C8
+            , T1.update_date AS C9
+            , T1.office_id AS C10
+            , T1.create_by AS C11
+            , T1.password AS C12
+            , T1.login_name AS C13
+            , T1.user_type AS C14
+            , T1.phone AS C15
+            , T1.name AS C16
+            , T1.create_date AS C17
+            , T1.update_by AS C18
+            , T1.email AS C19
+            , T1.remarks AS C20
+            , T1.id AS C21
+        </trim>
+    </sql>
+    
+    <sql id="whereCase">
+    	<where>
+            <if test="id != null">and T1.id = #{id}</if>
+            <if test="idLK != null">and T1.id LIKE #{idLK}</if>
+            <if test="no != null">and T1.no = #{no}</if>
+            <if test="noLK != null">and T1.no LIKE #{noLK}</if>
+            <if test="delFlag != null">and T1.del_flag = #{delFlag}</if>
+            <if test="delFlagLK != null">and T1.del_flag LIKE #{delFlagLK}</if>
+            <if test="companyId != null">and T1.company_id = #{companyId}</if>
+            <if test="companyIdLK != null">and T1.company_id LIKE #{companyIdLK}</if>
+            <if test="mobile != null">and T1.mobile = #{mobile}</if>
+            <if test="mobileLK != null">and T1.mobile LIKE #{mobileLK}</if>
+            <if test="photo != null">and T1.photo = #{photo}</if>
+            <if test="photoLK != null">and T1.photo LIKE #{photoLK}</if>
+            <if test="loginDate != null">and T1.login_date = #{loginDate}</if>
+            <if test="loginIp != null">and T1.login_ip = #{loginIp}</if>
+            <if test="loginIpLK != null">and T1.login_ip LIKE #{loginIpLK}</if>
+            <if test="loginFlag != null">and T1.login_flag = #{loginFlag}</if>
+            <if test="loginFlagLK != null">and T1.login_flag LIKE #{loginFlagLK}</if>
+            <if test="updateDate != null">and T1.update_date = #{updateDate}</if>
+            <if test="officeId != null">and T1.office_id = #{officeId}</if>
+            <if test="officeIdLK != null">and T1.office_id LIKE #{officeIdLK}</if>
+            <if test="createBy != null">and T1.create_by = #{createBy}</if>
+            <if test="createByLK != null">and T1.create_by LIKE #{createByLK}</if>
+            <if test="password != null">and T1.password = #{password}</if>
+            <if test="passwordLK != null">and T1.password LIKE #{passwordLK}</if>
+            <if test="loginName != null">and T1.login_name = #{loginName}</if>
+            <if test="loginNameLK != null">and T1.login_name LIKE #{loginNameLK}</if>
+            <if test="userType != null">and T1.user_type = #{userType}</if>
+            <if test="userTypeLK != null">and T1.user_type LIKE #{userTypeLK}</if>
+            <if test="phone != null">and T1.phone = #{phone}</if>
+            <if test="phoneLK != null">and T1.phone LIKE #{phoneLK}</if>
+            <if test="name != null">and T1.name = #{name}</if>
+            <if test="nameLK != null">and T1.name LIKE #{nameLK}</if>
+            <if test="createDate != null">and T1.create_date = #{createDate}</if>
+            <if test="updateBy != null">and T1.update_by = #{updateBy}</if>
+            <if test="updateByLK != null">and T1.update_by LIKE #{updateByLK}</if>
+            <if test="email != null">and T1.email = #{email}</if>
+            <if test="emailLK != null">and T1.email LIKE #{emailLK}</if>
+            <if test="remarks != null">and T1.remarks = #{remarks}</if>
+            <if test="remarksLK != null">and T1.remarks LIKE #{remarksLK}</if>
+        </where>
+    </sql>
+    
+     <sql id="smallWhereCase">
+    	<where>
+            <if test="id != null">and T1.id = #{id}</if>
+            <if test="no != null">and T1.no = #{no}</if>
+            <if test="delFlag != null">and T1.del_flag = #{delFlag}</if>
+            <if test="companyId != null">and T1.company_id = #{companyId}</if>
+            <if test="mobile != null">and T1.mobile = #{mobile}</if>
+            <if test="photo != null">and T1.photo = #{photo}</if>
+            <if test="loginDate != null">and T1.login_date = #{loginDate}</if>
+            <if test="loginIp != null">and T1.login_ip = #{loginIp}</if>
+            <if test="loginFlag != null">and T1.login_flag = #{loginFlag}</if>
+            <if test="updateDate != null">and T1.update_date = #{updateDate}</if>
+            <if test="officeId != null">and T1.office_id = #{officeId}</if>
+            <if test="createBy != null">and T1.create_by = #{createBy}</if>
+            <if test="password != null">and T1.password = #{password}</if>
+            <if test="loginName != null">and T1.login_name = #{loginName}</if>
+            <if test="userType != null">and T1.user_type = #{userType}</if>
+            <if test="phone != null">and T1.phone = #{phone}</if>
+            <if test="name != null">and T1.name = #{name}</if>
+            <if test="createDate != null">and T1.create_date = #{createDate}</if>
+            <if test="updateBy != null">and T1.update_by = #{updateBy}</if>
+            <if test="email != null">and T1.email = #{email}</if>
+            <if test="remarks != null">and T1.remarks = #{remarks}</if>
+        </where>
+    </sql>
+    
+    <resultMap id="returnEntity" type="SysUser">
+        <id column="C21" javaType="String" jdbcType="VARCHAR" property="id"/>
+        <result column="C1" javaType="String" jdbcType="VARCHAR" property="no"/>
+        <result column="C2" javaType="String" jdbcType="CHAR" property="delFlag"/>
+        <result column="C3" javaType="String" jdbcType="VARCHAR" property="companyId"/>
+        <result column="C4" javaType="String" jdbcType="VARCHAR" property="mobile"/>
+        <result column="C5" javaType="String" jdbcType="VARCHAR" property="photo"/>
+        <result column="C6" javaType="Date" jdbcType="TIMESTAMP" property="loginDate"/>
+        <result column="C7" javaType="String" jdbcType="VARCHAR" property="loginIp"/>
+        <result column="C8" javaType="String" jdbcType="VARCHAR" property="loginFlag"/>
+        <result column="C9" javaType="Date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="C10" javaType="String" jdbcType="VARCHAR" property="officeId"/>
+        <result column="C11" javaType="String" jdbcType="VARCHAR" property="createBy"/>
+        <result column="C12" javaType="String" jdbcType="VARCHAR" property="password"/>
+        <result column="C13" javaType="String" jdbcType="VARCHAR" property="loginName"/>
+        <result column="C14" javaType="String" jdbcType="CHAR" property="userType"/>
+        <result column="C15" javaType="String" jdbcType="VARCHAR" property="phone"/>
+        <result column="C16" javaType="String" jdbcType="VARCHAR" property="name"/>
+        <result column="C17" javaType="Date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="C18" javaType="String" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="C19" javaType="String" jdbcType="VARCHAR" property="email"/>
+        <result column="C20" javaType="String" jdbcType="VARCHAR" property="remarks"/>
+    </resultMap>
+    
+    <select id="get" parameterType="long" resultMap="returnEntity">
+        select * from sys_user T1 where  T1.id = #{id} and  true
+    </select>
+    
+    <update id="update" parameterType="map">
+        <include refid="updateSql"/>
+        <include refid="whereCase"/>
+    </update>
+    
+    <insert id="insertBatch"  parameterType="list">
+     	insert into sys_user 
+     	(
+            <trim prefix="" prefixOverrides=",">
+            	,no,del_flag,company_id,mobile,photo,login_date,login_ip,login_flag,update_date,office_id,create_by,password,login_name,user_type,phone,name,create_date,update_by,email,remarks
+            </trim>
+        ) values 
+    	<foreach collection="list" item="item" index="index" separator=",">  
+	    (
+            <trim prefix="" prefixOverrides=",">
+                 ,#{no} ,#{delFlag} ,#{companyId} ,#{mobile} ,#{photo} ,#{loginDate} ,#{loginIp} ,#{loginFlag} ,#{updateDate} ,#{officeId} ,#{createBy} ,#{password} ,#{loginName} ,#{userType} ,#{phone} ,#{name} ,#{createDate} ,#{updateBy} ,#{email} ,#{remarks}
+            </trim>
+	     )
+    	</foreach>  
+    </insert>  
+    
+    <insert id="insert" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id" >
+        insert into sys_user 
+        (
+            <trim prefix="" prefixOverrides=",">
+            	,no,del_flag,company_id,mobile,photo,login_date,login_ip,login_flag,update_date,office_id,create_by,password,login_name,user_type,phone,name,create_date,update_by,email,remarks
+            </trim>
+        )values(
+            <trim prefix="" prefixOverrides=",">
+            	,#{no},#{delFlag},#{companyId},#{mobile},#{photo},#{loginDate},#{loginIp},#{loginFlag},#{updateDate},#{officeId},#{createBy},#{password},#{loginName},#{userType},#{phone},#{name},#{createDate},#{updateBy},#{email},#{remarks}
+            </trim>
+        )
+    </insert>
+    
+    <delete id="remove" parameterType="map">
+        delete T1 from sys_user T1 <include refid="whereCase"/>
+    </delete>
+    
+    <select id="find" parameterType="map" resultMap="returnEntity">
+        select <include refid="colList" /> from sys_user T1
+		<include refid="joinTables"/>
+		<include refid="whereCase"/>
+        <if test="orderBy != null">order by #{orderBy}</if>
+        <if test="limitStart != null and limitEnd != null">limit #{limitStart}, #{limitEnd}</if>
+    </select>
+    
+    <select id="count" parameterType="map" resultType="long">
+        select count(1) from sys_user T1
+		<include refid="joinTables"/>
+        <include refid="whereCase"/>
+    </select>
+    
+    <update id="updateByEntity" parameterType="SysUser">
+        <include refid="updateSql"/>
+        <include refid="smallWhereCase"/>
+    </update>
+        
+    <delete id="removeByEntity" parameterType="SysUser">
+        delete T1 from sys_user T1 <include refid="smallWhereCase"/>
+    </delete>
+    
+    <select id="findByEntity" parameterType="SysUser" resultMap="returnEntity">
+        select <include refid="colList" /> from sys_user T1
+		<include refid="joinTables"/>
+        <include refid="smallWhereCase"/>
+        <if test="orderBy != null">order by #{orderBy}</if>
+        <if test="limitStart != null and limitEnd != null">limit #{limitStart}, #{limitEnd}</if>
+    </select>
+    
+    <select id="countByEntity" parameterType="SysUser" resultType="long">
+        select count(1) from sys_user T1
+		<include refid="joinTables"/>
+        <include refid="smallWhereCase"/>
+    </select>
+    
+    
+</mapper>

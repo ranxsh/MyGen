@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xsr.jeesite.dao.TestTable2Dao">
+  	<resultMap id="BaseResultMap" type="com.xsr.jeesite.entity.TestTable2" >
+  	    <result column="name" property="name" jdbcType="VARCHAR" />
+  	    <result column="id" property="id" jdbcType="INTEGER" />
+  	</resultMap>
+
+    <sql id="Base_Column_List" >
+        
+        name,
+        id
+    </sql>
+
+
+	<!--The user defined SQL!-->
+  	
+  	
+  	<!--The user defined SQL!-->
+  	
+  	<sql id="updateSql">
+		update test_table2 T7 set 
+            <trim prefix="" prefixOverrides=",">
+            	,name = #{name},id = #{id}
+            </trim>
+    </sql>
+  	
+  	<sql id="joinTables">
+    </sql>
+  	
+    <sql id="colList">
+        <trim prefix="" prefixOverrides=",">
+            , T7.name AS C48
+            , T7.id AS C49
+            , T7.id2 AS C50
+        </trim>
+    </sql>
+    
+    <sql id="whereCase">
+    	<where>
+            <if test="id2 != null">and T7.id2 = #{id2}</if>
+            <if test="id2GT != null">and T7.id2 > #{id2GT}</if><if test="id2LT != null">and #{id2LT} > T7.id2</if>
+            <if test="name != null">and T7.name = #{name}</if>
+            <if test="nameLK != null">and T7.name LIKE #{nameLK}</if>
+            <if test="id != null">and T7.id = #{id}</if>
+            <if test="idGT != null">and T7.id > #{idGT}</if>
+            <if test="idLT != null">and #{idLT} > T7.id</if>
+        </where>
+    </sql>
+    
+     <sql id="smallWhereCase">
+    	<where>
+            <if test="id2 != null">and T7.id2 = #{id2}</if>
+            <if test="name != null">and T7.name = #{name}</if>
+            <if test="id != null">and T7.id = #{id}</if>
+        </where>
+    </sql>
+    
+    <resultMap id="returnEntity" type="TestTable2">
+        <id column="C50" javaType="Integer" jdbcType="INTEGER" property="id2"/>
+        <result column="C48" javaType="String" jdbcType="VARCHAR" property="name"/>
+        <result column="C49" javaType="Integer" jdbcType="INTEGER" property="id"/>
+    </resultMap>
+    
+    <select id="get" parameterType="long" resultMap="returnEntity">
+        select * from test_table2 T7 where  T7.id2 = #{id2} and  true
+    </select>
+    
+    <update id="update" parameterType="map">
+        <include refid="updateSql"/>
+        <include refid="whereCase"/>
+    </update>
+    
+    <insert id="insertBatch"  parameterType="list">
+     	insert into test_table2 
+     	(
+            <trim prefix="" prefixOverrides=",">
+            	,name,id
+            </trim>
+        ) values 
+    	<foreach collection="list" item="item" index="index" separator=",">  
+	    (
+            <trim prefix="" prefixOverrides=",">
+                 ,#{name} ,#{id}
+            </trim>
+	     )
+    	</foreach>  
+    </insert>  
+    
+    <insert id="insert" parameterType="TestTable2" useGeneratedKeys="true" keyProperty="id2" >
+        insert into test_table2 
+        (
+            <trim prefix="" prefixOverrides=",">
+            	,name,id
+            </trim>
+        )values(
+            <trim prefix="" prefixOverrides=",">
+            	,#{name},#{id}
+            </trim>
+        )
+    </insert>
+    
+    <delete id="remove" parameterType="map">
+        delete T7 from test_table2 T7 <include refid="whereCase"/>
+    </delete>
+    
+    <select id="find" parameterType="map" resultMap="returnEntity">
+        select <include refid="colList" /> from test_table2 T7
+		<include refid="joinTables"/>
+		<include refid="whereCase"/>
+        <if test="orderBy != null">order by #{orderBy}</if>
+        <if test="limitStart != null and limitEnd != null">limit #{limitStart}, #{limitEnd}</if>
+    </select>
+    
+    <select id="count" parameterType="map" resultType="long">
+        select count(1) from test_table2 T7
+		<include refid="joinTables"/>
+        <include refid="whereCase"/>
+    </select>
+    
+    <update id="updateByEntity" parameterType="TestTable2">
+        <include refid="updateSql"/>
+        <include refid="smallWhereCase"/>
+    </update>
+        
+    <delete id="removeByEntity" parameterType="TestTable2">
+        delete T7 from test_table2 T7 <include refid="smallWhereCase"/>
+    </delete>
+    
+    <select id="findByEntity" parameterType="TestTable2" resultMap="returnEntity">
+        select <include refid="colList" /> from test_table2 T7
+		<include refid="joinTables"/>
+        <include refid="smallWhereCase"/>
+        <if test="orderBy != null">order by #{orderBy}</if>
+        <if test="limitStart != null and limitEnd != null">limit #{limitStart}, #{limitEnd}</if>
+    </select>
+    
+    <select id="countByEntity" parameterType="TestTable2" resultType="long">
+        select count(1) from test_table2 T7
+		<include refid="joinTables"/>
+        <include refid="smallWhereCase"/>
+    </select>
+    
+    
+</mapper>
