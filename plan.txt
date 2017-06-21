@@ -1,8 +1,10 @@
-1¡¢springMVC+shiro ÏµÍ³¹ÜÀí
-    1.1¡¢ÏµÍ³¼Ü¹¹¡¢swagger¡¢sys±í½á¹¹µÄentity¡¢mapper¡¢dao¡¢service¡¢controller
-    1.2¡¢ÓÃ»§µÇÂ¼½Ó¿Ú
-    1.3¡¢È¨ÏŞÑéÖ¤½Ó¿Ú
-    1.4¡¢Òì³£¡¢ÈÕÖ¾ÇĞÃæ
-    1.5¡¢²Ëµ¥Ò³Ãæ
-2¡¢cms
-3¡¢oa
+1ã€springMVC+shiro ç³»ç»Ÿç®¡ç†
+    1.1ã€ç³»ç»Ÿæ¶æ„ã€swaggerã€sysè¡¨ç»“æ„çš„entityã€mapperã€daoã€serviceã€controller
+    1.2ã€ç”¨æˆ·ç™»å½•æ¥å£
+    1.3ã€æƒé™éªŒè¯æ¥å£
+    1.4ã€å¼‚å¸¸ã€æ—¥å¿—åˆ‡é¢
+    1.5ã€èœå•é¡µé¢
+2ã€cms
+3ã€oa
+
+https://github.com/liyifeng1994/ssm
