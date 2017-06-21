@@ -5,6 +5,7 @@ import com.xsr.demo.my_jeesite.com.xsr.jeesite.codegen.def.LinkMetadata;
 import com.xsr.demo.my_jeesite.com.xsr.jeesite.codegen.def.PKColumnMetadata;
 import com.xsr.demo.my_jeesite.com.xsr.jeesite.codegen.def.TableMetadata;
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -38,7 +39,7 @@ public class TableMetaUtil {
                 }
                 rs = dbmd.getImportedKeys(null, null, table.getTableName());
                 while (rs.next()) {
-                    solveForeignKey(rs, tableMetadataMap);
+//                    solveForeignKey(rs, tableMetadataMap);
                 }
             }
         } catch (SQLException e) {
@@ -108,6 +109,10 @@ public class TableMetaUtil {
         column.setIsAutoincrement(rs.getString("IS_AUTOINCREMENT  ".trim()));
         TableMetadata targetTable = tableMetadataMap.get(column.getTableName());
         column.setTableMetadata(targetTable);
+        if("YES".equalsIgnoreCase(column.getIsAutoincrement())){
+            targetTable.setIncColumnMetadata(column);
+            log.debug(String.format("  表【%s】发现列【%s】，列类型为【%s】 IS_AUTOINCREMENT", column.getTableName(), column.getColumnName(), column.getTypeName()));
+        }
         targetTable.addColumn(column);
         log.debug(String.format("  表【%s】发现列【%s】，列类型为【%s】", column.getTableName(), column.getColumnName(), column.getTypeName()));
     }

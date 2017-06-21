@@ -1,6 +1,6 @@
 package com.xsr.demo.my_jeesite.com.xsr.jeesite.codegen.trans;
 
-import com.xsr.demo.utils.DBUtils;
+import com.xsr.demo.my_jeesite.com.xsr.jeesite.codegen.utils.DBUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;

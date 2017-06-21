@@ -7,10 +7,12 @@ import com.xsr.demo.my_jeesite.com.xsr.jeesite.codegen.utils.TableMetaUtil;
 import org.apache.commons.io.FileUtils;
 import org.bee.tl.core.GroupTemplate;
 import org.bee.tl.core.Template;
+import org.mozilla.javascript.optimizer.Codegen;
 
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +28,16 @@ public class CodeGen {
     //    private String ROOT_FILE_PATH_DESC = "D:\\temp\\mygen";
     private String tplPath;// = rootFilePath + "/tpl";
     private File genFolder; // = new File(ROOT_FILE_PATH_DESC + "");
-    private  String genPackage = "com.xsr.demo";
+    private  String genPackage = "com.xsr.jeesite";
     private GroupTemplate group ; //= new GroupTemplate(new File(PACKAGE_PATH));
 
-    private String host;
-    private String port;
-    private String password;
+    private String host = "localhost";
+    private String port = "3306";
+    private String userName = "root";
+    private String password = "admin";
+    private String dbName = "jeesite";
+    String codeFileRoot = "D:\\git_ranxsh\\my-jeesite\\src\\main\\java\\com\\xsr\\jeesite";
+
     List<String> tableNameList;
 
     //    TableTrans tableTrans;
@@ -39,6 +45,9 @@ public class CodeGen {
     Map<String, TableMetadata> tableMetadataMap = new HashMap<String, TableMetadata>();
     Map<String, TableTrans> transMap = new ConcurrentHashMap<String, TableTrans>();
 
+    public CodeGen(){
+        init();
+    }
     public CodeGen(String host,String port,String userName,String password, String genPackage, List<String> tableNameList){
         this.genPackage = genPackage;
         this.host = host;
@@ -48,11 +57,11 @@ public class CodeGen {
         init();
     }
 
-    public String gen() throws Exception{
+    public String genCode() throws Exception{
 
         String path = "";
         group.setCharset("UTF-8");
-        Connection conn = DBUtils.getConn();
+        Connection conn = DBUtils.getConn(host,port,userName,password,dbName);
         DatabaseMetaData dbmd = DBUtils.getDatabaseMetaData(conn);
         String dbType = "MySQL" ;
         dbType = dbmd.getDatabaseProductName();
@@ -62,9 +71,12 @@ public class CodeGen {
 
         TableMetaUtil.loadMetadata(dbmd, tableMetadataMap);
 
-
-        for (String tableName : tableMetadataMap.keySet()) {
-
+        tableNameList = new ArrayList<String>();
+        tableNameList.add("sys_user");
+        tableNameList.add("test_table");
+        tableNameList.add("test_table2");
+//        for (String tableName : tableMetadataMap.keySet()) {
+        for(String tableName : tableNameList){
             generateXml(tableName, dbType);
             generateDao(tableName, dbType);
             generateEntity(tableName, dbType);
@@ -82,11 +94,10 @@ public class CodeGen {
     }
 
     private void init(){
-        rootFilePath = this.getClass().getClassLoader().getResource("/").getPath() ;
+        rootFilePath = Codegen.class.getClassLoader().getResource("").getPath() ;
         tplPath = rootFilePath + "/tpl";
         group = new GroupTemplate(new File(tplPath));
-        String rootFilePath = "D:\\temp\\mygen";
-        genFolder = new File(rootFilePath + "");
+        genFolder = new File(codeFileRoot + "");
     }
 
     private void generateDialogInfoHtml(String tableName, String dbType) throws Exception {
@@ -217,4 +228,12 @@ public class CodeGen {
         FileUtils.write(new File(genFolder, "/entity/" + trans.getUpperStartClassName() + ".java"), template.getTextAsString());
     }
 
+    public static void main(String[] args){
+        CodeGen codeGen = new CodeGen();
+        try {
+            codeGen.genCode();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

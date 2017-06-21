@@ -39,6 +39,8 @@ public class TableMetadata {
 	private List<LinkMetadata> links = new ArrayList<LinkMetadata>();
 	private List<LinkMetadata> linkBys = new ArrayList<LinkMetadata>();
 
+	private  ColumnMetadata incColumnMetadata ;
+
 	public void addLink(LinkMetadata link) {
 		this.links.add(link);
 	}
@@ -126,4 +128,11 @@ public class TableMetadata {
 		this.remarks = remarks;
 	}
 
+	public ColumnMetadata getIncColumnMetadata() {
+		return incColumnMetadata;
+	}
+
+	public void setIncColumnMetadata(ColumnMetadata incColumnMetadata) {
+		this.incColumnMetadata = incColumnMetadata;
+	}
 }

@@ -55,8 +55,8 @@ public class DBUtils {
 	public static Connection getConn(String host, String port, String username, String password, String dbname) {
 		log.info("初始化数据库【开始】");
 		Connection conn = null;
-		ConfigUtils.Cfg cfg = ConfigUtils.getCfg(CONFIG_FILE);
-		String driver = cfg.get("jdbc.driver");    //"com.mysql.jdbc.Driver";
+//		ConfigUtils.Cfg cfg = ConfigUtils.getCfg(CONFIG_FILE);
+		String driver = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://" + host + ":" + port + "/" + dbname + "?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8";
 //		String username = cfg.get("jdbc.username");	//"root";
 //		String password = cfg.get("jdbc.password"); 	//"admin";
