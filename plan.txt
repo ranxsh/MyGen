@@ -8,3 +8,12 @@
 3、oa
 
 https://github.com/liyifeng1994/ssm
+
+
+重新评估
+现有的耦合太多了
+精简结构
+1、ssm(entity、mapper、dao、service、controller)+swagger
+page pageHelper
+2、接口返回结构 tree、list
+3、+shiro
