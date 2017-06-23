@@ -41,5 +41,7 @@
 	<!-- 定义无Controller的path<->view直接映射
 	<mvc:view-controller path="/" view-name="redirect:${web.view.index}"/>
 	-->
-
+	<bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config"/>
+	<mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"/>
+	<mvc:resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"/>
 </beans>
